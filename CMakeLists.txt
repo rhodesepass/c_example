@@ -10,6 +10,7 @@ endif()
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBDRM REQUIRED libdrm)
+pkg_check_modules(LIBGPIO REQUIRED libgpiod)
 
 # 共享库：所有例程都链接这个 target
 add_library(c_examples_libs STATIC
@@ -31,6 +32,7 @@ target_include_directories(c_examples_libs PUBLIC
 target_link_libraries(c_examples_libs PUBLIC
   ${LIBDRM_LIBRARIES}
   pthread
+  ${LIBGPIO_LIBRARIES}
 )
 
 add_subdirectory(examples)
