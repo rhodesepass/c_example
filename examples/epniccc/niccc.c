@@ -8,8 +8,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-// 在二进制中嵌入资源文件
-INCBIN(scene, "src/scene1.bin");
+// 在二进制中嵌入资源文件（路径由 CMake 传入，避免硬编码目录结构）
+#ifndef EP_NICCC_SCENE1_BIN
+#error "EP_NICCC_SCENE1_BIN is not defined. Please define it via CMake target_compile_definitions()."
+#endif
+INCBIN(scene, EP_NICCC_SCENE1_BIN);
 // 接下来可以这么使用：
 // printf("start = %p\n", &incbin_scene_start);
 // printf("end = %p\n", &incbin_scene_end);

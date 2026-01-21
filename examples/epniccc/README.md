@@ -1,0 +1,85 @@
+# EP-NICCC
+
+## 简介
+
+在明日方舟电子通行证平台上的 Atari ST demo „STNICCC 2000“ by Oxygene 的移植版。
+主要是演示DRM_warpper、fbdraw等驱动库的使用。
+
+## 数据说明
+
+来自：[https://arsantica-online.com/st-niccc-competition/](https://arsantica-online.com/st-niccc-competition/)
+
+
+```
+File description:
+
+The stream contains flags, palette-data and vertex-/polygon-data for 1800 frames.
+The stream is segmented in 64KB blocks.
+A frame never crosses such a 64KB boundary.
+Polygons can have 3-15 vertices.
+Polygons can cover each other, so a non-convex polygon filler is needed.
+Polygons are rendered to a 256×200 pixel screen in 4 bit color depth.
+The palette (16 out of 512 colors) can change from frame to frame.
+Words are 2 bytes in big endian order.
+Colors are stored as words in Atari-ST format 00000RRR0GGG0BBB (512 possible colors).
+
+Every frame stores the following data:
+
+1 byte Flags Bit 0: Frame needs to clear the screen.
+Bit 1: Frame contains palette data.
+Bit 2: Frame is stored in indexed mode.
+
+If frame contains palette data
+{
+1 word Bitmask
+
+For every set bit in the Bitmask (0-15)
+{
+1 word Color The color has to be copied into the palette at the reverse index of the actual bit,
+because the bitmask is stored in reverse order.
+In other words: If bit 15 of mask is set -> update color 0 of palette,
+…
+if bit 0 of mask is set -> update color 15 of palette.
+}
+}
+
+If frame is stored in indexed mode
+{
+1 byte Number of vertices (0-255)
+
+For every Vertex
+{
+1 byte X-position
+1 byte Y-position
+}
+
+While (…)
+{
+1 byte Poly-descriptor Contains: hi-nibble – 4 bits color-index
+lo-nibble – 4 bits number of polygon vertices
+
+Some special cases are encoded in the descriptor byte:
+$ff = End of frame
+$fe = End of frame and the stream skips to the next 64KB block
+$fd = End of stream (we are done \o/)
+
+For every vertex of the polygon
+{
+1 byte Vertex-id (0-255)
+}
+}
+}
+Else if frame is stored in non-indexed mode
+{
+while (…)
+{
+1 byte Poly-descriptor (See indexed mode)
+
+For every vertex of the polygon
+{
+1 byte X-position
+1 byte Y-position
+}
+}
+}
+```
