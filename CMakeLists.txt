@@ -21,6 +21,10 @@ add_library(c_examples_libs STATIC
   lib/RREFont/RREFont.cpp
   lib/keyinput.c
   lib/fbdraw.c
+  lib/fbdrawttf.c
+  lib/i2c.c
+  lib/spi.c
+  lib/uart.c
 )
 
 target_include_directories(c_examples_libs PUBLIC
