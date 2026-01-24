@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "name": "Flappy Bird",
+    "description": "A simple Flappy Bird game",
+    "icon": "",
+    "executable": {
+        "file": "flappy_bird"
+    },
+    "type": "fg"
+}
