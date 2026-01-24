@@ -1,0 +1,9 @@
+{
+    "version": 1,
+    "name": "I2C 测试",
+    "description": "展示如何使用 I2C 接口读写 SSD1306 液晶屏。",
+    "executable": {
+        "file": "i2c_test"
+    },
+    "type": "fg"
+}

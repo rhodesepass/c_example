@@ -1,0 +1,9 @@
+{
+    "version": 1,
+    "name": "SPI 测试",
+    "description": "展示如何使用 SPI 接口读取 ADXL345 加速度计数据。",
+    "executable": {
+        "file": "spi_test"
+    },
+    "type": "fg"
+}

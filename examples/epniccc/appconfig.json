@@ -1,0 +1,9 @@
+{
+    "version": 1,
+    "name": "EP-NICCC",
+    "description": "Atari ST demo 'STNICCC 2000' 移植版，演示 DRM 渲染。",
+    "executable": {
+        "file": "epniccc"
+    },
+    "type": "fg"
+}

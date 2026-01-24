@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "name": "文本阅读器",
+    "description": "一个可以阅读文本文件的APP",
+    "executable": {
+        "file": "textreader"
+    },
+    "type": "fg_ext",
+    "extensions":[".log",".txt"]
+}

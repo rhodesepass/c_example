@@ -1,0 +1,9 @@
+{
+    "version": 1,
+    "name": "UART 测试",
+    "description": "展示如何使用 UART 接口连接 ESP-01S 模块请求并显示一言 API。",
+    "executable": {
+        "file": "uart_test"
+    },
+    "type": "fg"
+}

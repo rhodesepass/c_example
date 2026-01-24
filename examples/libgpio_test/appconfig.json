@@ -1,0 +1,9 @@
+{
+    "version": 1,
+    "name": "GPIO 测试",
+    "description": "展示如何使用 libgpio 库来读写 GPIO 的值。",
+    "executable": {
+        "file": "libgpio_test"
+    },
+    "type": "fg"
+}
