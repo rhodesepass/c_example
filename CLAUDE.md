@@ -1,6 +1,3 @@
----
-alwaysApply: true
----
 # 电子通行证 (E-Pass) 开发指南
 
 这是基于 F1C200S 的 Linux 开发板“电子通行证”的 C 语言开发环境。

@@ -1,5 +1,5 @@
 ---
-alwaysApply: true
+applyTo: '**'
 ---
 # 电子通行证 (E-Pass) 开发指南
 
