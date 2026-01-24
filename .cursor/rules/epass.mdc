@@ -43,6 +43,7 @@ alwaysApply: true
 {
     "version": 1,
     "name": "应用名称",
+    "uuid":"shell调用uuidgen生成一个随机的",
     "description": "应用描述",
     "icon": "icon.png", // 程序图标，可以为空。如果为空，则使用默认图标。
     "executable": {
