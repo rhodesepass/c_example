@@ -1,6 +1,7 @@
 {
     "version": 1,
     "name": "UART 测试",
+    "uuid": "0b72ab0a-e1b9-4df1-9e92-5fcb7f8ae8ad",
     "description": "展示如何使用 UART 接口连接 ESP-01S 模块请求并显示一言 API。",
     "executable": {
         "file": "uart_test"

@@ -1,6 +1,7 @@
 {
     "version": 1,
     "name": "SPI 测试",
+    "uuid": "7669e654-0f35-4d9d-89e8-82e4fa9b826f",
     "description": "展示如何使用 SPI 接口读取 ADXL345 加速度计数据。",
     "executable": {
         "file": "spi_test"

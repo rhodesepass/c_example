@@ -1,6 +1,7 @@
 {
     "version": 1,
     "name": "I2C 测试",
+    "uuid": "b01f0d9f-6ba3-4c58-b8d8-0ef4c03d4a2a",
     "description": "展示如何使用 I2C 接口读写 SSD1306 液晶屏。",
     "executable": {
         "file": "i2c_test"

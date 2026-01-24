@@ -1,6 +1,7 @@
 {
     "version": 1,
     "name": "文本阅读器",
+    "uuid": "e11d3bc0-044a-49c5-9a96-f6fb5758c4d9",
     "description": "一个可以阅读文本文件的APP",
     "executable": {
         "file": "textreader"

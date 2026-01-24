@@ -1,6 +1,7 @@
 {
     "version": 1,
     "name": "GPIO 测试",
+    "uuid": "b29a46bd-5e9e-4131-8b3b-5c9e6ce07f1c",
     "description": "展示如何使用 libgpio 库来读写 GPIO 的值。",
     "executable": {
         "file": "libgpio_test"

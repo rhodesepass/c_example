@@ -1,6 +1,7 @@
 {
     "version": 1,
     "name": "EP-NICCC",
+    "uuid": "a8ca1f3b-9512-4ad1-9945-7bffc12a2e6c",
     "description": "Atari ST demo 'STNICCC 2000' 移植版，演示 DRM 渲染。",
     "executable": {
         "file": "epniccc"
