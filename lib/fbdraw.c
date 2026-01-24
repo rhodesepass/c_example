@@ -31,12 +31,23 @@ static inline uint32_t argb8888_blend_over(uint32_t dst, uint8_t src_r, uint8_t 
 }
 
 void fbdraw_fill_rect(fbdraw_fb_t* fb, fbdraw_rect_t* rect, uint32_t color){
-    for(int y = rect->y; y < rect->y + rect->h; y++){
-        for(int x = rect->x; x < rect->x + rect->w; x++){
+    int x0 = rect->x;
+    int y0 = rect->y;
+    int x1 = rect->x + rect->w;
+    int y1 = rect->y + rect->h;
+
+    if(x0 < 0) x0 = 0;
+    if(y0 < 0) y0 = 0;
+    if(x1 > fb->width) x1 = fb->width;
+    if(y1 > fb->height) y1 = fb->height;
+
+    if(x0 >= x1 || y0 >= y1) return;
+
+    for(int y = y0; y < y1; y++){
+        for(int x = x0; x < x1; x++){
             fb->vaddr[y * fb->width + x] = color;
         }
     }
-
 }
 
 void fbdraw_copy_rect(fbdraw_fb_t* src_fb, fbdraw_fb_t* dst_fb, fbdraw_rect_t* src_rect, fbdraw_rect_t* dst_rect){
@@ -94,32 +105,6 @@ void fbdraw_draw_rgb565(fbdraw_fb_t* dst_fb, uint8_t* rgb565_data, int width, in
     }
 }
 
-
-void fbdraw_image(fbdraw_fb_t* fb, fbdraw_rect_t* rect, char* image_path){
-    int w,h,c;
-    uint8_t* pixdata = stbi_load(image_path, &w, &h, &c, 4);
-    if(!pixdata){
-        log_error("failed to load image: %s", image_path);
-        return;
-    }
-
-    for(int y = rect->y; y < rect->y + rect->h; y++){
-        for(int x = rect->x; x < rect->x + rect->w; x++){
-
-            int src_x = x - rect->x;
-            int src_y = y - rect->y;
-
-            if(src_x >= 0 && src_x < w && src_y >= 0 && src_y < h){
-                uint32_t * dst = fb->vaddr + x + y * fb->width;
-                uint32_t bgra_pixel = *((uint32_t *)(pixdata) + src_x + src_y * w);
-                uint32_t rgb_pixel = (bgra_pixel & 0x000000FF) << 16 | (bgra_pixel & 0x0000FF00) | (bgra_pixel & 0x00FF0000) >> 16 | (bgra_pixel & 0xFF000000);
-                *dst = rgb_pixel;
-            }
-        }
-    }
-
-    stbi_image_free(pixdata);
-}
 
 
 // 将src_fb内的src_rect ，在它的alpha的基础上，乘 opacity / 255 ，再混合到dst_fb内的dst_rect中。
