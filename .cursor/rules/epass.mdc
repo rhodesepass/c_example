@@ -33,6 +33,7 @@ alwaysApply: true
   - 推荐使用 `fbdraw_fill_rect`, 进行渲染，而非手动操作像素。
   - 当用户要求显示中文时，使用fbdraw_ttf_font_t进行字体渲染，否则使用RREFont进行渲染。
     - 使用fbdraw_ttf，底层依赖为stb_truetype，需要添加Implementation。
+    - 使用RREFont渲染字体，背景颜色请设置为不透明，如setBg(0xFF000000)
   - 当用户要求显示图片时，使用fbdraw_image进行图片渲染，底层依赖为stb_image，需要添加Implementation。
 - **日志 (`lib/log.h`)**:
   - 使用 `log_info()`, `log_error()`, `log_debug()` 输出。

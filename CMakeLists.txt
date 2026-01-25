@@ -40,6 +40,7 @@ target_link_libraries(c_examples_libs PUBLIC
   ${LIBDRM_LIBRARIES}
   pthread
   ${LIBGPIO_LIBRARIES}
+  m
 )
 
 add_subdirectory(examples)
