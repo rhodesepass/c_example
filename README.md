@@ -16,15 +16,10 @@ mkdir build
 cd build
 cmake ..
 make -j
+make install
 ```
 
-## 编译产物路径
-
-* ep_niccc: build/examples/epniccc/epniccc
-* libgpio_test: build/examples/libgpio_test/libgpio_test
-* uart_test: build/examples/uart_test/uart_test
-* i2c_test: build/examples/i2c_test/i2c_test
-* spi_test: build/examples/spi_test/spi_test
+编译产物在dist下。
 
 ## 开源代码感谢
 

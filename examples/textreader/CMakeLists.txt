@@ -16,6 +16,14 @@ target_link_libraries(${APPLICATION_NAME} PRIVATE
   c_examples_libs
 )
 
-# epniccc 会链接到 c_examples_libs 里的 C++ 源（crrefont / RREFont）
 set_target_properties(${APPLICATION_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 
+install(TARGETS ${APPLICATION_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME})
+install(FILES ${CMAKE_CURRENT_LIST_DIR}/appconfig.json DESTINATION ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME})
+# 字体
+install(FILES ${CMAKE_SOURCE_DIR}/assets/AlibabaPuHuiTi-3-65-Medium.otf DESTINATION ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME}/fonts)
+
+install(FILES ${CMAKE_SOURCE_DIR}/assets/SourceHanSansSC-Regular.ttf 
+  DESTINATION 
+  ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME}/fonts
+)

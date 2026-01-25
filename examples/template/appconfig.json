@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "name": "程序模板",
+    "uuid": "12345678-90ab-cdef-1234-567890abcdee",
+    "description": "电子通行证最小示例程序。",
+    "executable": {
+        "file": "template"
+    },
+    "type": "fg"
+}

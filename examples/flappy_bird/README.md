@@ -7,9 +7,12 @@
 - `KEY_1` / `KEY_3`: 跳跃 / 开始游戏 / 重新开始
 - `KEY_4`: 退出游戏
 
-## 编译方法
+## 白银 注:
 
-1. 导出环境变量: `brenv`
-2. 进入 build 目录: `mkdir build && cd build`
-3. 执行 cmake: `cmake ..`
-4. 编译: `make`
+这是完全AI编写的示例。模型为GPT 5.1 Codex Mini。
+
+AI应该会自动加载我写好的提示词(epass.mdc/CLAUDE.md)，额外提示词为：
+
+```
+请帮我写一个Flapppy Bird小游戏。
+```

@@ -25,16 +25,26 @@
   - 核心流程：`init` -> `init_layer` -> `allocate_buffer` -> `mount_layer` -> 循环 (`dequeue_free_item` -> 绘图 -> `enqueue_display_item`)。
   - **重要**: `buffer_object_t` 和 `drm_warpper_queue_item_t` 必须是 `static` 或生命周期覆盖整个运行期，严禁使用局部栈变量。
   - 若图层模式设置为DRM_WARPPER_LAYER_MODE_ARGB8888，且图层透明度为255，则默认使用像素alpha。
-  - 如果你不希望图层是透明的，需要把每个像素的alpha设置为0xFF
+  - 如果你不希望图层是透明的，需要把每个像素的alpha设置为0xFF，如0xFF000000为黑色。
 - **绘图库 (`lib/fbdraw.h`, `lib/fbdrawttf.h`)**:
   - 推荐使用 `fbdraw_fill_rect`, 进行渲染，而非手动操作像素。
   - 当用户要求显示中文时，使用fbdraw_ttf_font_t进行字体渲染，否则使用RREFont进行渲染。
-    - 使用fbdrawttf时，记得包含STB_TRUETYPE_IMPLEMENTATION。
-  - 当用户要求显示图片时，使用fbdraw_image进行图片渲染，记得包含STB_IMAGE_IMPLEMENTATION。
+    - 使用fbdraw_ttf，底层依赖为stb_truetype，需要添加Implementation。
+  - 当用户要求显示图片时，使用fbdraw_image进行图片渲染，底层依赖为stb_image，需要添加Implementation。
 - **日志 (`lib/log.h`)**:
   - 使用 `log_info()`, `log_error()`, `log_debug()` 输出。
 
-## 3. appconfig.json 程序声明文件定义
+## 3. STB Implementation使用约定
+
+推荐方式：在单独的 .c 文件中定义（如 stb_impl.c）
+```c
+#define STB_TRUETYPE_IMPLEMENTATION
+#include "stb_truetype.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+```
+
+## 4. appconfig.json 程序声明文件定义
 每个应用必须在同级目录下包含 `appconfig.json`，用于启动器识别：
 ```json
 {
@@ -51,18 +61,17 @@
 }
 ```
 
-## 4. 程序启动与生命周期
+## 5. 程序启动与生命周期
 - **启动方式**: 启动器会切换到程序所在目录，然后执行 `./executable_file`。
 - **文件关联启动**: 当用户在启动器中选择关联文件时，启动器会执行 `./executable_file /abspath/to/file`。
 - **开发建议**: 在 `main(int argc, char *argv[])` 中，通过 `argc > 1` 获取被打开文件的绝对路径。
 
-## 5. 开发流程与规范
-- **新建例程**: 在 `examples/` 下新建文件夹，创建 `CMakeLists.txt`。
-- **集成**: 将新文件夹添加到 `examples/CMakeLists.txt`。
-- **README**: 必须包含功能说明、操作方法，以及是否需要在 `srgn_config` 中开启接口（GPIO/I2C/SPI/UART）。
-- **编译环境**: 提示用户执行 `brenv` 导出环境变量后进行 `cmake`。
+## 6. 开发流程与规范
+- **复制最小模板**: 在 `examples/` 下复制 `template` 文件夹，命名为你的程序名，如 `my_program`。
+- **修改文件**: 修改appconfig.json, main.c, README.md等文件。
+- **集成到examples**: 将你的程序添加到examples/CMakeLists.txt。
 
-## 6. 推荐代码模式 (渲染循环)
+## 7. 若使用图形绘制，则推荐代码模式为
 ```c
 // 阻塞等待空闲 buffer (自带 Vsync 效果)
 drm_warpper_dequeue_free_item(&drm_warpper, layer_id, &curr_item);
@@ -76,7 +85,7 @@ fbdraw_fill_rect(&fb, &(fbdraw_rect_t){0, 0, 360, 640}, 0xFF000000); // 清屏
 drm_warpper_enqueue_display_item(&drm_warpper, layer_id, curr_item);
 ```
 
-## 7.参考例程
+## 8.参考例程
 
 * 按键输入+画图+RREFont渲染字体：examples/epniccc
 * 双缓冲+ttf渲染：examples/textreader
