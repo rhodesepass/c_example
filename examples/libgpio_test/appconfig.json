@@ -6,5 +6,8 @@
     "executable": {
         "file": "libgpio_test"
     },
-    "type": "fg"
+    "type": "fg",
+    "screens": [
+        "360x640"
+    ]
 }

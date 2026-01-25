@@ -7,5 +7,11 @@
         "file": "textreader"
     },
     "type": "fg_ext",
-    "extensions":[".log",".txt"]
+    "extensions": [
+        ".log",
+        ".txt"
+    ],
+    "screens": [
+        "360x640"
+    ]
 }

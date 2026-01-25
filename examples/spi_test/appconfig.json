@@ -6,5 +6,8 @@
     "executable": {
         "file": "spi_test"
     },
-    "type": "fg"
+    "type": "fg",
+    "screens": [
+        "360x640"
+    ]
 }

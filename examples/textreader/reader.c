@@ -191,7 +191,7 @@ int textreader_paginate(const char *text,
                         size_t **out_pages,
                         int *out_page_count)
 {
-    log_info("paginate: len=%zu, font_px=%f, area_w=%d, area_h=%d", len, font_px, area_w, area_h);
+    // log_info("paginate: len=%zu, font_px=%f, area_w=%d, area_h=%d", len, font_px, area_w, area_h);
     if(!text || !font || !out_pages || !out_page_count) return -1;
     if(area_w <= 0 || area_h <= 0) return -1;
     if(font_px <= 0.0f) return -1;
@@ -205,7 +205,7 @@ int textreader_paginate(const char *text,
     size_t off = 0;
 
     while(off < len && text[off] != '\0') {
-        log_debug("paginate: off=%zu", off);
+        // log_debug("paginate: off=%zu", off);
         size_t next = layout_one_page(text, len, off, font, font_px, area_w, area_h);
         if(next <= off) {
             // 防死循环
@@ -224,7 +224,7 @@ int textreader_paginate(const char *text,
         pages[count++] = off;
     }
 
-    log_info("paginate: count=%d", count);
+    // log_info("paginate: count=%d", count);
     *out_pages = pages;
     *out_page_count = count > 0 ? count : 1;
     return 0;
