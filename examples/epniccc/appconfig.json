@@ -7,6 +7,7 @@
         "file": "epniccc"
     },
     "type": "fg",
+    "icon": "icon.png",
     "screens": [
         "360x640"
     ]

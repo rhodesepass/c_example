@@ -13,5 +13,6 @@
     ],
     "screens": [
         "360x640"
-    ]
+    ],
+    "icon": "icon.png"
 }

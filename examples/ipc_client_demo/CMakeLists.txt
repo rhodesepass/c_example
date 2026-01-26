@@ -1,11 +1,7 @@
-set(APPLICATION_NAME textreader)
+set(APPLICATION_NAME ipc_client_demo)
 
 add_executable(${APPLICATION_NAME}
   main.c
-  stb_impl.c
-  reader.c
-  state.c
-  menu.c
 )
 
 target_include_directories(${APPLICATION_NAME} PRIVATE
@@ -20,11 +16,8 @@ set_target_properties(${APPLICATION_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 
 install(TARGETS ${APPLICATION_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME})
 install(FILES ${CMAKE_CURRENT_LIST_DIR}/appconfig.json DESTINATION ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME})
-# 字体
-install(FILES ${CMAKE_SOURCE_DIR}/assets/AlibabaPuHuiTi-3-65-Medium.otf DESTINATION ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME}/fonts)
 
-install(FILES ${CMAKE_SOURCE_DIR}/assets/SourceHanSansSC-Regular.ttf 
-  DESTINATION 
-  ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME}/fonts
-)
-install(FILES ${CMAKE_CURRENT_LIST_DIR}/icon.png DESTINATION ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME})
+# 安装测试图片/视频到示例目录
+install(FILES ${CMAKE_SOURCE_DIR}/assets/test_force_dispimg.png DESTINATION ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME}/assets)
+install(FILES ${CMAKE_SOURCE_DIR}/assets/testtransition_ov.jpg DESTINATION ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME}/assets)
+install(FILES ${CMAKE_SOURCE_DIR}/assets/testvideo.mp4 DESTINATION ${CMAKE_INSTALL_PREFIX}/${APPLICATION_NAME}/assets)

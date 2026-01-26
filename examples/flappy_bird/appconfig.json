@@ -3,7 +3,7 @@
     "name": "Flappy Bird",
     "uuid": "6d5f83b2-fd34-4b47-9ec4-2f8b1c313f28",
     "description": "A simple Flappy Bird game",
-    "icon": "",
+    "icon": "icon.png",
     "executable": {
         "file": "flappy_bird"
     },

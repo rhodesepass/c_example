@@ -28,6 +28,9 @@ add_library(c_examples_libs STATIC
   lib/i2c.c
   lib/spi.c
   lib/uart.c
+  lib/ipc_client.c
+  lib/ipc_common.c
+  lib/uuid.c
 )
 
 target_include_directories(c_examples_libs PUBLIC
