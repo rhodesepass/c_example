@@ -6,4 +6,5 @@ add_subdirectory(uart_test)
 add_subdirectory(textreader)
 add_subdirectory(flappy_bird)
 add_subdirectory(ipc_client_demo)
+add_subdirectory(priestess)
 

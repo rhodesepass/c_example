@@ -1,0 +1,16 @@
+{
+    "version": 1,
+    "name": "PRIESTESS",
+    "uuid": "9f1acd30-eef1-4bb5-bb87-3e8b43e5e30a",
+    "description": "普瑞塞斯.",
+    "executable": {
+        "file": "priestess"
+    },
+    "icon": "icon.png",
+    "type": "bg",
+    "screens": [
+        "360x640",
+        "480x854",
+        "720x1280"
+    ]
+}
